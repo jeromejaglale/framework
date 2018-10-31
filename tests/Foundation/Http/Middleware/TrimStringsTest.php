@@ -75,12 +75,12 @@ class TrimStringsTest extends TestCase
 
         $middleware->handle($request, function (Request $request) {
             $t1 = $request->get('field1');
-            $this->assertEquals('value1', $t[0]);
-            $this->assertEquals('value2', $t[1]);
+            $this->assertEquals('value1', $t1[0]);
+            $this->assertEquals('value2', $t1[1]);
 
             $t2 = $request->get('field2');
-            $this->assertEquals('  value1  ', $t[0]);
-            $this->assertEquals('  value2  ', $t[1]);
+            $this->assertEquals('  value1  ', $t2[0]);
+            $this->assertEquals('  value2  ', $t2[1]);
         });
     }
 }
