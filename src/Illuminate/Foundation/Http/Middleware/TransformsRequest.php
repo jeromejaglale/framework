@@ -66,12 +66,10 @@ class TransformsRequest
      * @param  string  $parentKey
      * @return array
      */
-    protected function cleanArray(array $data, $parentKey = '')
+    protected function cleanArray(array $data, $parentKey = null)
     {
         return collect($data)->map(function ($value, $key) use ($parentKey) {
-            if (is_int($key) && $parentKey != '') {
-                $key = $parentKey;
-            }
+            $key = is_int($key) && is_string($parentKey) ? $parentKey : $key;
 
             return $this->cleanValue($key, $value);
         })->all();
